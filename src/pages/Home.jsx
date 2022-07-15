@@ -21,7 +21,7 @@ export default function Home() {
     const response = await search(city, 'metric');
     setData(response);
     setCity('');
-    setBtnlook(true)
+    setBtnlook(true);
   };
 
   return(
