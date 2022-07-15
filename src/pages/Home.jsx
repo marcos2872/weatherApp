@@ -26,6 +26,7 @@ export default function Home() {
 
   return(
     <div>
+      <h1 class="text-3xl font-bold underline">Weather</h1>
          <input
            type="text"
            value={city}
@@ -33,13 +34,15 @@ export default function Home() {
            onChange={saveInput}
            placeholder="Digite o nome da cidade"
          />
-         <input
+         <button
            id="pesquisa"
            type="button"
            placeholder="Buscar"
            disabled={btnlook}
            onClick={btnBuscar}
-         />
+         >
+          Buscar
+         </button>
          {data
          && (
          <>
