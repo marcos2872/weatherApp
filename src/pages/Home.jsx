@@ -16,9 +16,13 @@ export default function Home() {
   const btnBuscar = () => {
     weather();
   };
+  const keyPress = (event) => {
+    if (event.key === 'Enter') return weather();
+  }
 
  const weather = async () => {
-    const response = await search(city, 'metric');
+    const response = await search(city, 'metric', 'pt_br');
+    console.log(response);
     setData(response);
     setCity('');
     setBtnlook(true);
@@ -26,12 +30,13 @@ export default function Home() {
 
   return(
     <div>
-      <h1 class="text-3xl font-bold underline">Weather</h1>
+      <h1 className="text-3xl font-bold underline">Weather</h1>
          <input
            type="text"
            value={city}
            name="city"
            onChange={saveInput}
+           onKeyUp={keyPress}
            placeholder="Digite o nome da cidade"
          />
          <button
