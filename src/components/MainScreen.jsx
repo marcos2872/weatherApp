@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import search from '../services/getApiWeather';
 
-export default function MainScreen() {
+export default function MainScreen(props) {
   const [city, setCity] = useState('');
   const [cityBkp, setCityBkp] = useState('');
   const [data, setData] = useState(undefined);
@@ -13,6 +14,7 @@ export default function MainScreen() {
   const [date, setDate] = useState(undefined);
 
   const weather = async () => {
+    const { func } = props;
     const response = await search(cityBkp, units, 'pt_br');
     if (response.cod === '404') {
       setError(response.message);
@@ -22,6 +24,7 @@ export default function MainScreen() {
       setError(undefined);
       setData(response);
       setCity('');
+      func(response, cf);
     }
     const dt = new Date().toLocaleString();
     setDate(dt);
@@ -54,7 +57,7 @@ export default function MainScreen() {
 
   return (
     <div>
-      <div>
+      <div className="bg-indigo-300">
         <h1 className="text-3xl font-bold underline">Weather</h1>
         <input
           type="text"
@@ -66,6 +69,7 @@ export default function MainScreen() {
         />
 
         <button
+          className="bg-cyan-500 hover:bg-cyan-600"
           type="button"
           disabled={btnlook}
           onClick={() => {
