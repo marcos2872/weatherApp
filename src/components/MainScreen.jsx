@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
-import search from '../services/getApiWeather';
+import { search } from '../services/getApiWeather';
 
 export default function MainScreen(props) {
   const [city, setCity] = useState('');
@@ -20,6 +20,7 @@ export default function MainScreen(props) {
       setError(response.message);
       setCity('');
       setBtnlook(true);
+      func(response.cod, cf);
     } else {
       setError(undefined);
       setData(response);
@@ -69,7 +70,7 @@ export default function MainScreen(props) {
         />
 
         <button
-          className="bg-cyan-500 hover:bg-cyan-600"
+          className="bg-cyan-500 hover:bg-cyan-600 shadow-lg shadow-cyan-500/50"
           type="button"
           disabled={btnlook}
           onClick={() => {

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import AirPollution from '../components/AirPollution';
 import MainScreen from '../components/MainScreen';
 import ScreenDetails from '../components/ScreenDetails';
 
@@ -14,6 +15,7 @@ export default function Home() {
     <div>
       <MainScreen func={funcdata} />
       <ScreenDetails info={data} />
+      <AirPollution info={data} />
     </div>
   );
 }
