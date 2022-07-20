@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
-import { search } from '../services/getApiWeather';
+// import { search } from '../services/getApiWeather';
+import { mainS } from '../tests/data';
 
 export default function MainScreen(props) {
   const [city, setCity] = useState('');
-  const [cityBkp, setCityBkp] = useState('');
+  // const [cityBkp, setCityBkp] = useState('');
   const [data, setData] = useState(undefined);
   const [btnlook, setBtnlook] = useState(true);
   const [units, setUnits] = useState('metric');
@@ -15,7 +16,8 @@ export default function MainScreen(props) {
 
   const weather = async () => {
     const { func } = props;
-    const response = await search(cityBkp, units, 'pt_br');
+    // const response = await search(cityBkp, units, 'pt_br');
+    const response = mainS;
     if (response.cod === '404') {
       setError(response.message);
       setCity('');
@@ -40,7 +42,7 @@ export default function MainScreen(props) {
   const saveInput = ({ target }) => {
     const { value } = target;
     setCity(value);
-    setCityBkp(value);
+    // setCityBkp(value);
     setBtnlook(value.length < 3);
   };
 
