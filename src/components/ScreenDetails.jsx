@@ -37,7 +37,7 @@ export default function ScreenDetails(props) {
               </p>
               <p>
                 Visibilidade:
-                {` ${data.visibility}m`}
+                {` ${cf === '°C' ? data.visibility / 1000 : ((data.visibility / 1000) * 1.60934).toFixed(2)}${cf === '°C' ? 'km' : 'mi'}`}
               </p>
             </div>
           ) : null}
