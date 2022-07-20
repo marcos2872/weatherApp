@@ -56,6 +56,8 @@ export default function MainScreen(props) {
     }
   };
 
+  const dayName = ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado'];
+
   return (
     <div>
       <div className="bg-indigo-300">
@@ -91,7 +93,7 @@ export default function MainScreen(props) {
               <p>
                 {data.weather[0].description}
               </p>
-              <p>{date}</p>
+              <p>{`${dayName[new Date().getDay()]} ${date}`}</p>
             </>
           )}
       </div>
