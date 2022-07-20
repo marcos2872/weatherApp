@@ -22,7 +22,7 @@ export default function AirPollution(props) {
     if (info) {
       getApi();
     }
-  });
+  }, [info]);
 
   const quality = () => {
     const num = deta.main.aqi;

@@ -61,7 +61,7 @@ export default function MainScreen(props) {
   return (
     <div>
       <div className="bg-indigo-300">
-        <h1 className="text-3xl font-bold underline bg-orange-400">Weather</h1>
+        <h1 className="text-3xl font-bold underline">Weather</h1>
         <input
           type="text"
           value={city}
