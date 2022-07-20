@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
-import search from '../services/getApiWeather';
+import { search } from '../services/getApiWeather';
 
-export default function MainScreen() {
+export default function MainScreen(props) {
   const [city, setCity] = useState('');
   const [cityBkp, setCityBkp] = useState('');
   const [data, setData] = useState(undefined);
@@ -13,15 +14,18 @@ export default function MainScreen() {
   const [date, setDate] = useState(undefined);
 
   const weather = async () => {
+    const { func } = props;
     const response = await search(cityBkp, units, 'pt_br');
     if (response.cod === '404') {
       setError(response.message);
       setCity('');
       setBtnlook(true);
+      func(response.cod, cf);
     } else {
       setError(undefined);
       setData(response);
       setCity('');
+      func(response, cf);
     }
     const dt = new Date().toLocaleString();
     setDate(dt);
@@ -52,10 +56,12 @@ export default function MainScreen() {
     }
   };
 
+  const dayName = ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado'];
+
   return (
     <div>
-      <div>
-        <h1 className="text-3xl font-bold underline">Weather</h1>
+      <div className="bg-indigo-300">
+        <h1 className="text-3xl font-bold underline bg-orange-400">Weather</h1>
         <input
           type="text"
           value={city}
@@ -66,6 +72,7 @@ export default function MainScreen() {
         />
 
         <button
+          className="bg-cyan-500 hover:bg-cyan-600 shadow-lg shadow-cyan-500/50"
           type="button"
           disabled={btnlook}
           onClick={() => {
@@ -86,7 +93,7 @@ export default function MainScreen() {
               <p>
                 {data.weather[0].description}
               </p>
-              <p>{date}</p>
+              <p>{`${dayName[new Date().getDay()]} ${date}`}</p>
             </>
           )}
       </div>
