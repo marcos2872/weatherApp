@@ -21,3 +21,14 @@ export async function airPollution(lat, lon) {
     return error.message;
   }
 }
+
+export async function call5day(lat, lon, units) {
+  try {
+    const url = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${units}&appid=${Key}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return error.message;
+  }
+}

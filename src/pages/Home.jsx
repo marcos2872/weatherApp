@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import AirPollution from '../components/AirPollution';
+import FiveDayWeatherForecast from '../components/FiveDayWeatherForecast';
 import MainScreen from '../components/MainScreen';
 import ScreenDetails from '../components/ScreenDetails';
 
@@ -16,6 +17,7 @@ export default function Home() {
       <MainScreen func={funcdata} />
       <ScreenDetails info={data} />
       <AirPollution info={data} />
+      <FiveDayWeatherForecast info={data} />
     </div>
   );
 }
