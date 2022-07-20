@@ -5,9 +5,12 @@ import { forecast } from '../tests/data';
 
 export default function FiveDayWeatherForecast(props) {
   const [day, setDay] = useState();
-  // const [alldays, setAlldays] = useState();
+  const [alldays, setAlldays] = useState();
   const [unit, setUnit] = useState();
   const [erro, setErro] = useState(true);
+  const [open, setOpen] = useState(false);
+  const [index, setIndex] = useState();
+  const [infoDetails, setInfoDetails] = useState({ data: '404', cf: '°C' });
   const { info } = props;
   const dayName = ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado', 'domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado'];
 
@@ -22,28 +25,74 @@ export default function FiveDayWeatherForecast(props) {
       const days = deta.map(({ main }) => main.temp);
       setUnit(cf);
       setDay(days);
+      setAlldays(deta);
       return setErro(false);
-      // return setAlldays(deta);
     }
     return setErro(true);
+  };
+
+  const openDetails = (param) => {
+    setOpen(!open);
+    setIndex(param);
   };
 
   useEffect(() => {
     if (info) {
       getApi();
     }
-  }, [info]);
+    if (open) {
+      setInfoDetails(alldays[index]);
+    }
+  }, [info, open]);
 
-  const dayWeek = (ele, index) => (
-    <div key={index}>
-      <p>{dayName[new Date(1).getDay() + index]}</p>
-      <h3>{`${ele}${unit}`}</h3>
+  const dayWeek = (ele, param) => (
+    <div key={param} className="flex justify-center gap-4">
+      <button
+        type="button"
+        onClick={() => openDetails(param)}
+      >
+        <p>{dayName[new Date(1).getDay() + param]}</p>
+        <h3>{`${ele}${unit}`}</h3>
+      </button>
     </div>
   );
 
   return (
-    <div className="bg-indigo-300 rounded-md container mx-auto flex justify-center gap-4 ">
-      {!erro ? day.map((ele, index) => dayWeek(ele, index)) : null}
+    <div className="flex flex-col container justify-center gap-4">
+      <div className="bg-indigo-300 rounded-md container mx-auto flex justify-center gap-4 ">
+        {!erro ? day.map((ele, ind) => dayWeek(ele, ind)) : null}
+      </div>
+      {open && (
+        <div className="flex flex-col container">
+          <div>
+            <p>
+              Sensação termica:
+              {` ${infoDetails.main.feels_like}${unit}`}
+            </p>
+            <p>
+              Temp Max/Min:
+              {` ${infoDetails.main.temp_max}°/${infoDetails.main.temp_max}°`}
+            </p>
+            <p>
+              Umidade:
+              {` ${infoDetails.main.humidity}%`}
+            </p>
+            <p>
+              Vento:
+              {` ${infoDetails.wind.speed}${unit === '°C' ? 'm/s' : 'mp/h'}`}
+            </p>
+            <p>
+              Pressão:
+              {` ${infoDetails.main.pressure}hPa`}
+            </p>
+            <p>
+              Visibilidade:
+              {` ${unit === '°C' ? infoDetails.visibility / 1000 : ((infoDetails.visibility / 1000) * 1.60934).toFixed(2)}${unit === '°C' ? 'km' : 'mi'}`}
+            </p>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }

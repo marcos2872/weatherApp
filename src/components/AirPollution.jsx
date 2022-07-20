@@ -40,14 +40,12 @@ export default function AirPollution(props) {
     if (!erro) {
       return (
         <div>
-          <h6>
-            Qualidade Do Ar
-          </h6>
           <button
             type="button"
             onClick={() => setOpen(!open)}
             className="text-xlcursor-pointer"
           >
+            <h6>Qualidade Do Ar</h6>
             {quality()}
           </button>
           {open
