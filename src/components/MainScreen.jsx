@@ -61,9 +61,10 @@ export default function MainScreen(props) {
   const dayName = ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado'];
 
   return (
-    <div>
-      <div className="bg-indigo-300">
-        <h1 className="text-3xl font-bold underline">Weather</h1>
+  // <div className="container mx-auto flex flex-norow flex-wrap justify-center ">
+    <div className="bg-indigo-300 rounded-md container mx-auto flex flex-col justify-center gap-4 ">
+      <h1 className="text-3xl font-bold underline flex justify-center">Weather</h1>
+      <div className="flex justify-center">
         <input
           type="text"
           value={city}
@@ -83,22 +84,25 @@ export default function MainScreen(props) {
         >
           {cf}
         </button>
-        {error ? <h5>{error}</h5>
-          : data && (
-            <>
-              <p />
-              {data.name}
-              <h2>
-                {data.main.temp}
-                {cf}
-              </h2>
-              <p>
-                {data.weather[0].description}
-              </p>
-              <p>{`${dayName[new Date().getDay()]} ${date}`}</p>
-            </>
-          )}
       </div>
+
+      {error ? <h5 className="flex justify-center">{error}</h5>
+        : data && (
+          <div className="flex justify-center flex-col gap-4">
+            <p className="flex justify-center">
+              {data.name}
+            </p>
+            <h2 className="flex justify-center">
+              {data.main.temp}
+              {cf}
+            </h2>
+            <p className="flex justify-center">
+              {data.weather[0].description}
+            </p>
+            <p className="flex justify-center">{`${dayName[new Date().getDay()]} ${date}`}</p>
+          </div>
+        )}
     </div>
+  // </div>
   );
 }

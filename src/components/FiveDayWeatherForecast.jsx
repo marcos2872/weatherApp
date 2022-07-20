@@ -42,7 +42,7 @@ export default function FiveDayWeatherForecast(props) {
   );
 
   return (
-    <div>
+    <div className="bg-indigo-300 rounded-md container mx-auto flex justify-center gap-4 ">
       {!erro ? day.map((ele, index) => dayWeek(ele, index)) : null}
     </div>
   );

@@ -14,7 +14,7 @@ export default function Home() {
     });
   };
   return (
-    <div>
+    <div className="container mx-auto flex flex-row flex-wrap">
       <MainScreen func={funcdata} />
       <ScreenDetails info={data} />
       <AirPollution info={data} />

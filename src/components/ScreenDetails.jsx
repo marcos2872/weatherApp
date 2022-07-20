@@ -7,10 +7,10 @@ export default function ScreenDetails(props) {
   const details = () => {
     const { data, cf } = info;
     return (
-      <div>
+      <div className="flex flex-row flex-wrap justify-center">
         {data !== '404'
           ? (
-            <div className="bg-purple-600">
+            <div>
               <p>
                 Sensação termica:
                 {` ${data.main.feels_like}${cf}`}
@@ -48,7 +48,7 @@ export default function ScreenDetails(props) {
   };
 
   return (
-    <div>
+    <div className="bg-purple-300 rounded-md container mx-auto flex flex-row flex-wrap justify-center gap-4 ">
       {info ? details() : null}
     </div>
   );
