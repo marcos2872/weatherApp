@@ -63,7 +63,7 @@ export default function FiveDayWeatherForecast(props) {
 
   return (
     <div className="flex flex-col container justify-center gap-4">
-      <div className="bg-indigo-300 rounded-md container mx-auto flex justify-center gap-4 ">
+      <div className="rounded-md container mx-auto flex justify-center gap-4 ">
         {!erro ? day.map((ele, ind) => dayWeek(ele, ind)) : null}
       </div>
       {open && (

@@ -30,7 +30,7 @@ export default function MainScreen(props) {
       func(response, cf);
     }
     const dt = new Date().toLocaleString();
-    setDate(dt);
+    setDate(dt.split(' '));
   };
 
   useEffect(() => {
@@ -61,36 +61,37 @@ export default function MainScreen(props) {
   const dayName = ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado'];
 
   return (
-  // <div className="container mx-auto flex flex-norow flex-wrap justify-center ">
-    <div className="bg-indigo-300 rounded-md container mx-auto flex flex-col justify-center gap-5 ">
-      <h1 className="text-3xl font-bold flex justify-center">Weather</h1>
-      <div className="flex justify-evenly bg-white rounded-lg p-6 shadow-xl">
-        <input
-        className="text-x font-light p-2 shadow-xl w-4/12 focus:outline-none capitalize"
+    <div className="rounded-md container mx-auto flex flex-col justify-center gap-5 bg-no-repeat bg-gradient-to-br from-cyan-700 to-blue-700"
+    id="bg">
+      <header>
+        <h1 className="text-3xl font-bold flex justify-center">Weather</h1>
+        <div className="flex justify-center gap-20 rounded-lg p-6 ">
+          <input
+        className="text-x rounded-md  font-light p-2 shadow-xl w-4/12 focus:outline-none capitalize"
           type="text"
           value={city}
           name="city"
           onChange={saveInput}
           onKeyUp={(event) => event.key === 'Enter' && weather()}
           placeholder="Digite o nome da cidade"
-        />
-
-        <button
+          />
+          <button
           className="bg-cyan-500 hover:bg-cyan-600 shadow-lg shadow-cyan-500/50 rounded-md w-10"
           type="button"
           disabled={btnlook}
           onClick={() => {
             btnUnits();
           }}
-        >
+          >
           {cf}
-        </button>
-      </div>
+          </button>
+        </div>
+      </header>
 
       {error ? <h5 className="flex justify-center">{error}</h5>
         : data && (
           <div className="flex flex-col gap-5">
-            <p className="flex justify-center uppercase ">{`${dayName[new Date().getDay()]}, ${date}`}</p>
+            <p className="flex justify-center capitalize ">{`${dayName[new Date().getDay()]} ${date[0]} | Hora Local: ${date[1]}`}</p>
             <p className="flex justify-center text-2xl capitalize font-bold">
               {data.name}
             </p>
@@ -104,6 +105,5 @@ export default function MainScreen(props) {
           </div>
         )}
     </div>
-  // </div>
   );
 }

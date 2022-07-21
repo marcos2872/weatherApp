@@ -14,7 +14,7 @@ export default function Home() {
     });
   };
   return (
-    <div className="container mx-auto flex flex-row flex-wrap">
+    <div className=" rounded-md container mx-auto flex flex-col justify-center gap-5 bg-gradient-to-br from-cyan-700 to-blue-700">
       <MainScreen func={funcdata} />
       <ScreenDetails info={data} />
       <AirPollution info={data} />

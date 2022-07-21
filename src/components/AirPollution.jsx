@@ -68,7 +68,7 @@ export default function AirPollution(props) {
   };
 
   return (
-    <div className="bg-indigo-300 rounded-md container mx-auto flex flex-col justify-center gap-4 ">
+    <div className="rounded-md container mx-auto flex flex-col justify-center gap-4 ">
       {info ? index() : null}
     </div>
   );
