@@ -63,10 +63,11 @@ export default function MainScreen(props) {
 
   return (
   // <div className="container mx-auto flex flex-norow flex-wrap justify-center ">
-    <div className="bg-indigo-300 rounded-md container mx-auto flex flex-col justify-center gap-4 ">
-      <h1 className="text-3xl font-bold underline flex justify-center">Weather</h1>
-      <div className="flex justify-center">
+    <div className="bg-indigo-300 rounded-md container mx-auto flex flex-col justify-center gap-5 ">
+      <h1 className="text-3xl font-bold flex justify-center">Weather</h1>
+      <div className="flex justify-evenly bg-white rounded-lg p-6 shadow-xl">
         <input
+          className="text-x font-light p-2 shadow-xl w-4/12 focus:outline-none capitalize"
           type="text"
           value={city}
           name="city"
@@ -76,7 +77,7 @@ export default function MainScreen(props) {
         />
 
         <button
-          className="bg-cyan-500 hover:bg-cyan-600 shadow-lg shadow-cyan-500/50"
+          className="bg-cyan-500 hover:bg-cyan-600 shadow-lg shadow-cyan-500/50 rounded-md w-10"
           type="button"
           disabled={btnlook}
           onClick={() => {
@@ -89,11 +90,15 @@ export default function MainScreen(props) {
 
       {error ? <h5 className="flex justify-center">{error}</h5>
         : data && (
-          <div className="flex justify-center flex-col gap-4">
-            <p className="flex justify-center">
+          <div className="flex flex-col gap-5">
+            <p className="flex justify-center uppercase ">{`${dayName[new Date().getDay()]}, ${date}`}</p>
+            <p className="flex justify-center text-2xl capitalize font-bold">
               {data.name}
             </p>
-            <h2 className="flex justify-center">
+            <p className="flex justify-center capitalize">
+              {data.weather[0].description}
+            </p>
+            <h2 className="flex justify-center text-5xl font-bold pb-2">
               {data.main.temp}
               {cf}
             </h2>
