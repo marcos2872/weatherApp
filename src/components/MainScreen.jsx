@@ -30,8 +30,7 @@ export default function MainScreen(props) {
       func(response, cf);
     }
     const dt = new Date().toLocaleString();
-    // const formatDt = dt.split(' ');
-    setDate(dt.split(' '));
+    setDate(dt);
   };
 
   useEffect(() => {
@@ -67,7 +66,7 @@ export default function MainScreen(props) {
       <h1 className="text-3xl font-bold flex justify-center">Weather</h1>
       <div className="flex justify-evenly bg-white rounded-lg p-6 shadow-xl">
         <input
-          className="text-x font-light p-2 shadow-xl w-4/12 focus:outline-none capitalize"
+        className="text-x font-light p-2 shadow-xl w-4/12 focus:outline-none capitalize"
           type="text"
           value={city}
           name="city"
@@ -91,7 +90,7 @@ export default function MainScreen(props) {
       {error ? <h5 className="flex justify-center">{error}</h5>
         : data && (
           <div className="flex flex-col gap-5">
-            <p className="flex justify-center uppercase ">{`${dayName[new Date().getDay()]} ${date[0]} | ${date[1]}`}</p>
+            <p className="flex justify-center uppercase ">{`${dayName[new Date().getDay()]}, ${date}`}</p>
             <p className="flex justify-center text-2xl capitalize font-bold">
               {data.name}
             </p>
@@ -102,9 +101,6 @@ export default function MainScreen(props) {
               {data.main.temp}
               {cf}
             </h2>
-            <p className="flex justify-center">
-              {data.weather[0].description}
-            </p>
           </div>
         )}
     </div>
