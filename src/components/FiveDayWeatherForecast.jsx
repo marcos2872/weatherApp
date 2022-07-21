@@ -67,7 +67,7 @@ export default function FiveDayWeatherForecast(props) {
         {!erro ? day.map((ele, ind) => dayWeek(ele, ind)) : null}
       </div>
       {open && (
-        <div className="flex flex-col container">
+        <div className="flex flex-col container uppercase">
           <div>
             <p>
               Sensação termica:

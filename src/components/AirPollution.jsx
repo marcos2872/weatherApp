@@ -39,7 +39,7 @@ export default function AirPollution(props) {
   const index = () => {
     if (!erro) {
       return (
-        <div>
+        <div className="flex justify-center my-9">
           <button
             type="button"
             onClick={() => setOpen(!open)}
@@ -68,7 +68,7 @@ export default function AirPollution(props) {
   };
 
   return (
-    <div className="rounded-md container mx-auto flex flex-col justify-center gap-4 ">
+    <div className="rounded-md container mx-auto flex flex-col justify-center gap-4">
       {info ? index() : null}
     </div>
   );
