@@ -102,9 +102,6 @@ export default function MainScreen(props) {
               {data.main.temp}
               {cf}
             </h2>
-            <p className="flex justify-center">
-              {data.weather[0].description}
-            </p>
           </div>
         )}
     </div>
