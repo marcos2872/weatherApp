@@ -9,7 +9,7 @@ export default function FiveDayWeatherForecast(props) {
   const [unit, setUnit] = useState();
   const [erro, setErro] = useState(true);
   const [open, setOpen] = useState(false);
-  const [index, setIndex] = useState();
+  const [index, setIndex] = useState(undefined);
   const [infoDetails, setInfoDetails] = useState({ data: '404', cf: '°C' });
   const { info } = props;
   const dayName = ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado', 'domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado'];
@@ -32,7 +32,9 @@ export default function FiveDayWeatherForecast(props) {
   };
 
   const openDetails = (param) => {
-    setOpen(!open);
+    if (index === param) {
+      setOpen(!open);
+    }
     setIndex(param);
   };
 
@@ -40,10 +42,12 @@ export default function FiveDayWeatherForecast(props) {
     if (info) {
       getApi();
     }
-    if (open) {
+    if (index >= 0) {
       setInfoDetails(alldays[index]);
+
+      setOpen(true);
     }
-  }, [info, open]);
+  }, [info, index]);
 
   const dayWeek = (ele, param) => (
     <div key={param} className="flex justify-center gap-4">

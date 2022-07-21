@@ -30,7 +30,8 @@ export default function MainScreen(props) {
       func(response, cf);
     }
     const dt = new Date().toLocaleString();
-    setDate(dt);
+    // const formatDt = dt.split(' ');
+    setDate(dt.split(' '));
   };
 
   useEffect(() => {
@@ -99,7 +100,7 @@ export default function MainScreen(props) {
             <p className="flex justify-center">
               {data.weather[0].description}
             </p>
-            <p className="flex justify-center">{`${dayName[new Date().getDay()]} ${date}`}</p>
+            <p className="flex justify-center">{`${dayName[new Date().getDay()]} ${date[0]} | ${date[1]}`}</p>
           </div>
         )}
     </div>
