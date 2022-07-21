@@ -91,7 +91,7 @@ export default function MainScreen(props) {
       {error ? <h5 className="flex justify-center">{error}</h5>
         : data && (
           <div className="flex flex-col gap-5">
-            <p className="flex justify-center uppercase ">{`${dayName[new Date().getDay()]}, ${date}`}</p>
+            <p className="flex justify-center uppercase ">{`${dayName[new Date().getDay()]} ${date[0]} | ${date[1]}`}</p>
             <p className="flex justify-center text-2xl capitalize font-bold">
               {data.name}
             </p>
@@ -105,7 +105,6 @@ export default function MainScreen(props) {
             <p className="flex justify-center">
               {data.weather[0].description}
             </p>
-            <p className="flex justify-center">{`${dayName[new Date().getDay()]} ${date[0]} | ${date[1]}`}</p>
           </div>
         )}
     </div>
