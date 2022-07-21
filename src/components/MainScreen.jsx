@@ -69,7 +69,7 @@ export default function MainScreen(props) {
         <h1 className="text-3xl font-bold flex justify-center">Weather</h1>
         <div className="flex justify-center gap-20 rounded-lg p-6 ">
           <input
-            className="text-x rounded-md  font-light p-2 shadow-xl w-4/12 focus:outline-none capitalize"
+            className="text-x rounded-md font-light p-2 shadow-xl w-4/12 focus:outline-none capitalize"
             type="text"
             value={city}
             name="city"
@@ -92,7 +92,7 @@ export default function MainScreen(props) {
 
       {error ? <h5 className="flex justify-center">{error}</h5>
         : data && (
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-4">
             <p className="flex justify-center capitalize ">{`${dayName[new Date().getDay()]} ${date[0]} | Hora Local: ${date[1]}`}</p>
             <p className="flex justify-center text-2xl capitalize font-bold">
               {data.name}
@@ -100,7 +100,7 @@ export default function MainScreen(props) {
             <p className="flex justify-center capitalize">
               {data.weather[0].description}
             </p>
-            <h2 className="flex justify-center text-5xl font-bold pb-2">
+            <h2 className="flex justify-center text-5xl font-bold pb-2 mb-12">
               {data.main.temp}
               {cf}
             </h2>
