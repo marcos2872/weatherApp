@@ -14,7 +14,7 @@ export default function Home() {
     });
   };
   return (
-    <div className="flex gap-5  border-2 border-black-500 w-full h-full bg-black">
+    <div className="flex gap-5 border-2 border-black-500 w-full h-full bg-black">
       <div className="flex flex-col justify-center gap-5 border-2 border-red-500 w-3/4 bg-gradient-to-br from-cyan-700 to-blue-700 rounded-lg">
         <MainScreen func={funcdata} />
         <ScreenDetails info={data} />

@@ -91,13 +91,13 @@ export default function MainScreen(props) {
           : data && (
           <div className="flex flex-col gap-4">
             <p className="flex justify-center capitalize text-white">{`${dayName[new Date().getDay()]} ${date[0]} | Hora Local: ${date[1]}`}</p>
-            <p className="flex justify-center text-2xl capitalize font-bold text-white">
+            <p className="flex justify-center text-2xl capitalize text-white">
               {data.name}
             </p>
             <p className="flex justify-center capitalize text-cyan-200">
               {data.weather[0].description}
             </p>
-            <h2 className="flex justify-center text-5xl font-bold pb-2 mb-12 text-white">
+            <h2 className="flex justify-center text-5xl  pb-2 mb-12 text-white">
               {data.main.temp}
               {cf}
             </h2>
