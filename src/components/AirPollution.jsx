@@ -43,14 +43,14 @@ export default function AirPollution(props) {
           <button
             type="button"
             onClick={() => setOpen(!open)}
-            className="text-xlcursor-pointer"
+            className="text-xl cursor-pointer text-white"
           >
-            <h6>Qualidade Do Ar</h6>
+            <h6 className="uppercase text-white">Qualidade Do Ar</h6>
             {quality()}
           </button>
           {open
           && (
-            <div className=" flex-col bg-white/[0.1] rounded-md">
+            <div className=" flex-col bg-black/[0.1] rounded-md text-white w-4/5">
               <p>{`Monóxido de carbono: ${deta.components.co}μg/m3`}</p>
               <p>{`Monóxido de nitrogênio: ${deta.components.no}μg/m3`}</p>
               <p>{`Dióxido de nitrogênio: ${deta.components.no2}μg/m3`}</p>
