@@ -14,11 +14,14 @@ export default function Home() {
     });
   };
   return (
-    <div className="flex flex-col justify-center gap-5 bg-gradient-to-br from-cyan-700 to-blue-700">
-      <MainScreen func={funcdata} />
-      <ScreenDetails info={data} />
+    <div className="flex gap-5 bg-gradient-to-br from-cyan-700 to-blue-700">
+      <div className="flex flex-col justify-center gap-5">
+        <MainScreen func={funcdata} />
+        <ScreenDetails info={data} />
+        <FiveDayWeatherForecast info={data} />
+      </div>
       <AirPollution info={data} />
-      <FiveDayWeatherForecast info={data} />
+
     </div>
   );
 }

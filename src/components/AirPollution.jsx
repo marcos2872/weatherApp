@@ -39,7 +39,7 @@ export default function AirPollution(props) {
   const index = () => {
     if (!erro) {
       return (
-        <div className="flex justify-center my-9">
+        <div className="flex flex-col justify-center my-9">
           <button
             type="button"
             onClick={() => setOpen(!open)}
@@ -50,17 +50,17 @@ export default function AirPollution(props) {
           </button>
           {open
           && (
-          <div className="md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in">
-            <p>{`Monóxido de carbono: ${deta.components.co}μg/m3`}</p>
-            <p>{`Monóxido de nitrogênio: ${deta.components.no}μg/m3`}</p>
-            <p>{`Dióxido de nitrogênio: ${deta.components.no2}μg/m3`}</p>
-            <p>{`Ozônio: ${deta.components.o3}μg/m3`}</p>
-            <p>{`Dióxido de enxofre: ${deta.components.so2}μg/m3`}</p>
-            <p>{`Partículas finas: ${deta.components.pm2_5}μg/m3`}</p>
-            <p>{`Partículas grossas: ${deta.components.pm10}μg/m3`}</p>
-            <p>{`Amônia: ${deta.components.nh3}μg/m3`}</p>
+            <div className=" flex-col bg-white/[0.1] rounded-md">
+              <p>{`Monóxido de carbono: ${deta.components.co}μg/m3`}</p>
+              <p>{`Monóxido de nitrogênio: ${deta.components.no}μg/m3`}</p>
+              <p>{`Dióxido de nitrogênio: ${deta.components.no2}μg/m3`}</p>
+              <p>{`Ozônio: ${deta.components.o3}μg/m3`}</p>
+              <p>{`Dióxido de enxofre: ${deta.components.so2}μg/m3`}</p>
+              <p>{`Partículas finas: ${deta.components.pm2_5}μg/m3`}</p>
+              <p>{`Partículas grossas: ${deta.components.pm10}μg/m3`}</p>
+              <p>{`Amônia: ${deta.components.nh3}μg/m3`}</p>
 
-          </div>
+            </div>
           )}
         </div>
       );
@@ -68,7 +68,7 @@ export default function AirPollution(props) {
   };
 
   return (
-    <div className="rounded-md container mx-auto flex flex-col justify-center gap-4">
+    <div className=" container mx-auto flex justify-center gap-4">
       {info ? index() : null}
     </div>
   );
