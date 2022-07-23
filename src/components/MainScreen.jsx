@@ -62,50 +62,48 @@ export default function MainScreen(props) {
 
   return (
     <div
-      className="rounded-md container mx-auto flex flex-col justify-center gap-5"
-      id="bg"
+      className="rounded-md container mx-auto flex flex-col align-center gap-7"
     >
-      <header>
-        <h1 className="text-3xl font-bold flex justify-center">Weather</h1>
-        <div className="flex justify-center gap-20 rounded-lg p-6 ">
-          <input
-            className="text-x rounded-md font-light p-2 shadow-xl w-4/12 focus:outline-none capitalize"
-            type="text"
-            value={city}
-            name="city"
-            onChange={saveInput}
-            onKeyUp={(event) => event.key === 'Enter' && weather()}
-            placeholder="Digite o nome da cidade"
-          />
-          <button
-            className="bg-cyan-500 hover:bg-cyan-600 shadow-lg shadow-cyan-500/50 rounded-md w-10"
-            type="button"
-            disabled={btnlook}
-            onClick={() => {
-              btnUnits();
-            }}
-          >
-            {cf}
-          </button>
-        </div>
+      <header className="flex justify-center gap-5">
+        <h1 className="text-3xl font-bold flex justify-center text-white">Weather</h1>
+        <button
+          className=" text-white flex justify-center bg-cyan-500 hover:bg-cyan-600 shadow-lg shadow-cyan-500/50 rounded-md w-10 absolute right-8 top-3"
+          type="button"
+          disabled={btnlook}
+          onClick={() => {
+            btnUnits();
+          }}
+        >
+          {cf}
+        </button>
       </header>
-
-      {error ? <h5 className="flex justify-center">{error}</h5>
-        : data && (
+      <input
+        className="text-white text-x rounded-md font-light p-2 shadow-xl w-4/12 focus:outline-none capitalize m-auto"
+        type="text"
+        value={city}
+        name="city"
+        onChange={saveInput}
+        onKeyUp={(event) => event.key === 'Enter' && weather()}
+        placeholder="Digite o nome da cidade"
+      />
+      <main>
+        {error ? <h5 className="flex justify-center">{error}</h5>
+          : data && (
           <div className="flex flex-col gap-4">
-            <p className="flex justify-center capitalize ">{`${dayName[new Date().getDay()]} ${date[0]} | Hora Local: ${date[1]}`}</p>
-            <p className="flex justify-center text-2xl capitalize font-bold">
+            <p className="flex justify-center capitalize text-white">{`${dayName[new Date().getDay()]} ${date[0]} | Hora Local: ${date[1]}`}</p>
+            <p className="flex justify-center text-2xl capitalize font-bold text-white">
               {data.name}
             </p>
-            <p className="flex justify-center capitalize">
+            <p className="flex justify-center capitalize text-cyan-200">
               {data.weather[0].description}
             </p>
-            <h2 className="flex justify-center text-5xl font-bold pb-2 mb-12">
+            <h2 className="flex justify-center text-5xl font-bold pb-2 mb-12 text-white">
               {data.main.temp}
               {cf}
             </h2>
           </div>
-        )}
+          )}
+      </main>
     </div>
   );
 }

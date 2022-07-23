@@ -50,10 +50,11 @@ export default function FiveDayWeatherForecast(props) {
   }, [info, index]);
 
   const dayWeek = (ele, param) => (
-    <div key={param} className="flex justify-center gap-4">
+    <div key={param}>
       <button
         type="button"
         onClick={() => openDetails(param)}
+        className="uppercase"
       >
         <p>{dayName[new Date(1).getDay() + param]}</p>
         <h3>{`${ele}${unit}`}</h3>
@@ -62,12 +63,12 @@ export default function FiveDayWeatherForecast(props) {
   );
 
   return (
-    <div className="flex flex-col container justify-center gap-4">
-      <div className="rounded-md container mx-auto flex justify-center gap-4 ">
+    <div className="flex flex-col text-white">
+      <div className="flex justify-evenly">
         {!erro ? day.map((ele, ind) => dayWeek(ele, ind)) : null}
       </div>
       {open && (
-        <div className="flex flex-col container uppercase">
+        <div className="flex flex-col">
           <div>
             <p>
               Sensação termica:
