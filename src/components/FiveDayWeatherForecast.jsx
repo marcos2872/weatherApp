@@ -56,19 +56,19 @@ export default function FiveDayWeatherForecast(props) {
         onClick={() => openDetails(param)}
         className="uppercase"
       >
-        <p>{dayName[new Date(1).getDay() + param]}</p>
+        <p>{dayName[new Date().getDay() + param + 1]}</p>
         <h3>{`${ele}${unit}`}</h3>
       </button>
     </div>
   );
 
   return (
-    <div className="flex flex-col text-white">
+    <div className="flex flex-col text-white ">
       <div className="flex justify-evenly">
         {!erro ? day.map((ele, ind) => dayWeek(ele, ind)) : null}
       </div>
       {open && (
-        <div className="flex flex-col">
+        <div className="flex flex-col bg-black/[0.1] w-fit ">
           <div>
             <p>
               Sensação termica:

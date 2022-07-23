@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
-// import { search } from '../services/getApiWeather';
+import { search, iconUrlFromCode } from '../services/getApiWeather';
 import { mainS } from '../tests/data';
 
 export default function MainScreen(props) {
@@ -28,6 +28,7 @@ export default function MainScreen(props) {
       setData(response);
       setCity('');
       func(response, cf);
+      // console.log(response);
     }
     const dt = new Date().toLocaleString();
     setDate(dt.split(' '));
@@ -78,7 +79,7 @@ export default function MainScreen(props) {
         </button>
       </header>
       <input
-        className="text-white text-x rounded-md font-light p-2 shadow-xl w-4/12 focus:outline-none capitalize m-auto"
+        className="text-x rounded-md font-light p-2 shadow-xl w-4/12 focus:outline-none capitalize m-auto"
         type="text"
         value={city}
         name="city"
@@ -97,6 +98,7 @@ export default function MainScreen(props) {
             <p className="flex justify-center capitalize text-cyan-200">
               {data.weather[0].description}
             </p>
+            <img src={iconUrlFromCode(data.weather[0].icon)} alt="" className="w-20" />
             <h2 className="flex justify-center text-5xl  pb-2 mb-12 text-white">
               {data.main.temp}
               {cf}

@@ -33,3 +33,5 @@ export async function call5day(lat, lon, units) {
     return error.message;
   }
 }
+
+export const iconUrlFromCode = (code) => `http://openweathermap.org/img/wn/${code}@2x.png`;

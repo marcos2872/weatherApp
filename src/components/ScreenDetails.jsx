@@ -1,7 +1,13 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import {
-  UilUserExclamation, UilTemperatureHalf, UilWind, UilRaindropsAlt, UilCompressLines, UilGlobe, UilEye,
+  UilUserExclamation,
+  UilTemperatureHalf,
+  UilWind,
+  UilRaindropsAlt,
+  UilCompressLines,
+  UilGlobe,
+  UilEye,
 } from '@iconscout/react-unicons';
 
 export default function ScreenDetails(props) {
