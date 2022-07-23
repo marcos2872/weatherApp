@@ -79,7 +79,7 @@ export default function MainScreen(props) {
         </button>
       </header>
       <input
-        className="text-x rounded-md font-light p-2 shadow-xl w-4/12 focus:outline-none capitalize m-auto"
+        className="text-white text-x rounded-md font-light p-2 shadow-xl w-4/12 focus:outline-none capitalize m-auto mb-9 placeholder:lowercase"
         type="text"
         value={city}
         name="city"
