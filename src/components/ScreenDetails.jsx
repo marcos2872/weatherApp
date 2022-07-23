@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { } from '@iconscout/react-unicons';
 import latLong from '../icons/lat-long.png';
 import wind from '../icons/vento.png';
 import visibility from '../icons/visibilidade.png';
