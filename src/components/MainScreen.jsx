@@ -78,7 +78,7 @@ export default function MainScreen(props) {
         </button>
       </header>
       <input
-        className="text-white text-x rounded-md font-light p-2 shadow-xl w-4/12 focus:outline-none capitalize m-auto"
+        className="text-white text-x rounded-md font-light p-2 shadow-xl w-4/12 focus:outline-none capitalize m-auto mb-9 placeholder:lowercase"
         type="text"
         value={city}
         name="city"
@@ -97,7 +97,7 @@ export default function MainScreen(props) {
             <p className="flex justify-center capitalize text-cyan-200">
               {data.weather[0].description}
             </p>
-            <h2 className="flex justify-center text-5xl  pb-2 mb-12 text-white">
+            <h2 className="flex justify-center text-5xl  pb-2 mb-9 text-white">
               {data.main.temp}
               {cf}
             </h2>
