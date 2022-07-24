@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
-import { search, iconUrlFromCode } from '../services/getApiWeather';
+import {
+  // search,
+  iconUrlFromCode,
+} from '../services/getApiWeather';
 import { mainS } from '../tests/data';
 
 export default function MainScreen(props) {
@@ -98,7 +101,7 @@ export default function MainScreen(props) {
             <p className="flex justify-center capitalize text-cyan-200">
               {data.weather[0].description}
             </p>
-            <img src={iconUrlFromCode(data.weather[0].icon)} alt="" className="w-20" />
+            <img src={iconUrlFromCode(data.weather[0].icon)} alt="" className="w-20 flex justify-center" />
             <h2 className="flex justify-center text-5xl  pb-2 mb-12 text-white">
               {data.main.temp}
               {cf}

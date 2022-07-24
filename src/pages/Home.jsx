@@ -14,15 +14,19 @@ export default function Home() {
     });
   };
   return (
-    <div className="flex gap-5 border-2 border-black-500 w-full h-full bg-black">
-      <div className="flex flex-col justify-center gap-5 border-2 border-red-500 w-3/4 bg-gradient-to-br from-cyan-700 to-blue-700 rounded-lg">
+    <div className="flex flex-col items-center gap-5 w-full h-full bg-gradient-to-br from-cyan-700 to-blue-700">
+      <div className="flex gap-5 w-11/12 bg-black/[0.1] rounded-lg">
         <MainScreen func={funcdata} />
-        <ScreenDetails info={data} />
-        <FiveDayWeatherForecast info={data} />
       </div>
-      <div className="flex flex-col gap-5 border-2 border-gray-500 w-1/4 bg-gradient-to-br to-cyan-700 from-blue-700 rounded-lg">
-        <AirPollution info={data} />
+      <div className="flex gap-5 w-11/12">
+        <div className="flex flex-col gap-5 w-11/12 h-fit bg-black/[0.1] rounded-lg">
+          <ScreenDetails info={data} />
+          <FiveDayWeatherForecast info={data} />
+        </div>
 
+        <div className="flex flex-col gap-5 w-3/12 bg-black/[0.1] h-fit rounded-lg">
+          <AirPollution info={data} />
+        </div>
       </div>
 
     </div>

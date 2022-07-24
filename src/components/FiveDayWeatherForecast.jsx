@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
-// import { call5day } from '../services/getApiWeather';
+import {
+  // call5day,
+  iconUrlFromCode,
+} from '../services/getApiWeather';
 import { forecast } from '../tests/data';
 
 export default function FiveDayWeatherForecast(props) {
@@ -49,6 +52,37 @@ export default function FiveDayWeatherForecast(props) {
     }
   }, [info, index]);
 
+  const details = () => (
+    <div className="flex flex-col bg-black/[0.1] w-fit ">
+      <div>
+        <p>
+          Sensação termica:
+          {` ${infoDetails.main.feels_like}${unit}`}
+        </p>
+        <p>
+          Temp Max/Min:
+          {` ${infoDetails.main.temp_max}°/${infoDetails.main.temp_max}°`}
+        </p>
+        <p>
+          Umidade:
+          {` ${infoDetails.main.humidity}%`}
+        </p>
+        <p>
+          Vento:
+          {` ${infoDetails.wind.speed}${unit === '°C' ? 'm/s' : 'mp/h'}`}
+        </p>
+        <p>
+          Pressão:
+          {` ${infoDetails.main.pressure}hPa`}
+        </p>
+        <p>
+          Visibilidade:
+          {` ${unit === '°C' ? infoDetails.visibility / 1000 : ((infoDetails.visibility / 1000) * 1.60934).toFixed(2)}${unit === '°C' ? 'km' : 'mi'}`}
+        </p>
+      </div>
+    </div>
+  );
+
   const dayWeek = (ele, param) => (
     <div key={param}>
       <button
@@ -57,8 +91,10 @@ export default function FiveDayWeatherForecast(props) {
         className="uppercase"
       >
         <p>{dayName[new Date().getDay() + param + 1]}</p>
+        <img src={iconUrlFromCode(alldays[param].weather[0].icon)} alt=" " />
         <h3>{`${ele}${unit}`}</h3>
       </button>
+      {open && details(param)}
     </div>
   );
 
@@ -67,37 +103,6 @@ export default function FiveDayWeatherForecast(props) {
       <div className="flex justify-evenly">
         {!erro ? day.map((ele, ind) => dayWeek(ele, ind)) : null}
       </div>
-      {open && (
-        <div className="flex flex-col bg-black/[0.1] w-fit ">
-          <div>
-            <p>
-              Sensação termica:
-              {` ${infoDetails.main.feels_like}${unit}`}
-            </p>
-            <p>
-              Temp Max/Min:
-              {` ${infoDetails.main.temp_max}°/${infoDetails.main.temp_max}°`}
-            </p>
-            <p>
-              Umidade:
-              {` ${infoDetails.main.humidity}%`}
-            </p>
-            <p>
-              Vento:
-              {` ${infoDetails.wind.speed}${unit === '°C' ? 'm/s' : 'mp/h'}`}
-            </p>
-            <p>
-              Pressão:
-              {` ${infoDetails.main.pressure}hPa`}
-            </p>
-            <p>
-              Visibilidade:
-              {` ${unit === '°C' ? infoDetails.visibility / 1000 : ((infoDetails.visibility / 1000) * 1.60934).toFixed(2)}${unit === '°C' ? 'km' : 'mi'}`}
-            </p>
-          </div>
-        </div>
-      )}
-
     </div>
   );
 }

@@ -39,7 +39,7 @@ export default function AirPollution(props) {
   const index = () => {
     if (!erro) {
       return (
-        <div className="flex flex-col justify-center my-9">
+        <div className="flex flex-col gap-5 justify-center my-9">
           <button
             type="button"
             onClick={() => setOpen(!open)}
@@ -50,15 +50,15 @@ export default function AirPollution(props) {
           </button>
           {open
           && (
-            <div className=" flex-col bg-black/[0.1] rounded-md text-white w-4/5">
-              <p>{`Monóxido de carbono: ${deta.components.co}μg/m3`}</p>
-              <p>{`Monóxido de nitrogênio: ${deta.components.no}μg/m3`}</p>
-              <p>{`Dióxido de nitrogênio: ${deta.components.no2}μg/m3`}</p>
-              <p>{`Ozônio: ${deta.components.o3}μg/m3`}</p>
-              <p>{`Dióxido de enxofre: ${deta.components.so2}μg/m3`}</p>
-              <p>{`Partículas finas: ${deta.components.pm2_5}μg/m3`}</p>
-              <p>{`Partículas grossas: ${deta.components.pm10}μg/m3`}</p>
-              <p>{`Amônia: ${deta.components.nh3}μg/m3`}</p>
+            <div className=" flex-col rounded-md text-white w-4/5">
+              <p>{`CO: ${deta.components.co}μg/m3`}</p>
+              <p>{`NO: ${deta.components.no}μg/m3`}</p>
+              <p>{`NO₂: ${deta.components.no2}μg/m3`}</p>
+              <p>{`O₃: ${deta.components.o3}μg/m3`}</p>
+              <p>{`SO₂: ${deta.components.so2}μg/m3`}</p>
+              <p>{`NH₃: ${deta.components.nh3}μg/m3`}</p>
+              <p>{`Pf: ${deta.components.pm2_5}μg/m3`}</p>
+              <p>{`Pg: ${deta.components.pm10}μg/m3`}</p>
 
             </div>
           )}

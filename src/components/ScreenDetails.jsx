@@ -17,10 +17,9 @@ export default function ScreenDetails(props) {
     const { data, cf } = info;
     return (
       <div className="">
-        <hr className="mb-9" />
         {data !== '404'
           ? (
-            <div className="flex justify-evenly  text-lg mb-5">
+            <div className="flex justify-evenly gap-5  text-lg mb-5">
               <section>
                 <p className="flex flex-row mb-3 items-end gap-3 text-white">
                   <UilUserExclamation size={25} className="text-white" />
