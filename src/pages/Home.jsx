@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import AirPollution from '../components/AirPollution';
 import FiveDayWeatherForecast from '../components/FiveDayWeatherForecast';
+import Footer from '../components/Footer';
 import MainScreen from '../components/MainScreen';
 import ScreenDetails from '../components/ScreenDetails';
 
@@ -14,7 +15,7 @@ export default function Home() {
     });
   };
   return (
-    <div className="flex flex-col items-center gap-5 w-full h-screen bg-gradient-to-br from-cyan-700 to-blue-700">
+    <div className="flex flex-col items-center gap-5 w-full h-full bg-gradient-to-br from-cyan-700 to-blue-700">
       <div className="flex gap-5 w-11/12 bg-black/[0.1] rounded-lg">
         <MainScreen func={funcdata} />
       </div>
@@ -28,6 +29,9 @@ export default function Home() {
           <AirPollution info={data} />
         </div>
       </div>
+      <footer>
+        <Footer />
+      </footer>
 
     </div>
   );
