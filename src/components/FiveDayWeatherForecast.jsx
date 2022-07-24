@@ -1,6 +1,14 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import {
+  UilUserExclamation,
+  UilTemperatureHalf,
+  UilWind,
+  UilRaindropsAlt,
+  UilCompressLines,
+  UilEye,
+} from '@iconscout/react-unicons';
+import {
   // call5day,
   iconUrlFromCode,
 } from '../services/getApiWeather';
@@ -47,37 +55,46 @@ export default function FiveDayWeatherForecast(props) {
     }
     if (index >= 0) {
       setInfoDetails(alldays[index]);
-
       setOpen(true);
     }
   }, [info, index]);
 
   const details = () => (
-    <div className="flex flex-col items-center w-fit ">
-      <p>
-        Sensação termica:
-        {` ${infoDetails.main.feels_like}${unit}`}
-      </p>
-      <p>
-        Temp Max/Min:
-        {` ${infoDetails.main.temp_max}°/${infoDetails.main.temp_max}°`}
-      </p>
-      <p>
-        Umidade:
-        {` ${infoDetails.main.humidity}%`}
-      </p>
-      <p>
-        Vento:
-        {` ${infoDetails.wind.speed}${unit === '°C' ? 'm/s' : 'mp/h'}`}
-      </p>
-      <p>
-        Pressão:
-        {` ${infoDetails.main.pressure}hPa`}
-      </p>
-      <p>
-        Visibilidade:
-        {` ${unit === '°C' ? infoDetails.visibility / 1000 : ((infoDetails.visibility / 1000) * 1.60934).toFixed(2)}${unit === '°C' ? 'km' : 'mi'}`}
-      </p>
+    <div className="flex justify-evenly gap-5  text-lg mb-5">
+      <section>
+        <p className="flex flex-row mb-3 items-end gap-3 text-white">
+          <UilUserExclamation size={25} className="text-white" />
+          Sensação termica:
+          {` ${infoDetails.main.feels_like}${unit}`}
+        </p>
+        <p className="flex flex-row mb-3 items-end gap-3 text-white">
+          <UilTemperatureHalf size={25} className="text-white" />
+          Temp Max/Min:
+          {` ${infoDetails.main.temp_max}°/${infoDetails.main.temp_max}°`}
+        </p>
+        <p className="flex flex-row mb-3 items-end gap-3 text-white">
+          <UilRaindropsAlt size={25} className="text-white" />
+          Umidade:
+          {` ${infoDetails.main.humidity}%`}
+        </p>
+        <p className="flex flex-row mb-3 items-end gap-3 text-white">
+          <UilWind size={25} className="text-white" />
+          Vento:
+          {` ${infoDetails.wind.speed}${unit === '°C' ? 'm/s' : 'mp/h'}`}
+        </p>
+      </section>
+      <section>
+        <p className="flex flex-row mb-3 items-end gap-2 text-white">
+          <UilCompressLines size={25} className="text-white" />
+          Pressão:
+          {` ${infoDetails.main.pressure}hPa`}
+        </p>
+        <p className="flex flex-row mb-5 items-center gap-2 text-white">
+          <UilEye size={25} className="text-white" />
+          Visibilidade:
+          {` ${unit === '°C' ? infoDetails.visibility / 1000 : ((infoDetails.visibility / 1000) * 1.60934).toFixed(2)}${unit === '°C' ? 'km' : 'mi'}`}
+        </p>
+      </section>
     </div>
   );
 
