@@ -60,7 +60,7 @@ export default function FiveDayWeatherForecast(props) {
   }, [info, index]);
 
   const details = () => (
-    <div className="flex justify-evenly gap-5  text-lg mb-5">
+    <div className="flex justify-evenly text-lg my-5">
       <section>
         <p className="flex flex-row mb-3 items-end gap-3 text-white">
           <UilUserExclamation size={25} className="text-white" />
@@ -106,14 +106,14 @@ export default function FiveDayWeatherForecast(props) {
         className={`uppercase ${param === index && open ? 'bg-black/10 rounded-lg' : ''}`}
       >
         <p>{dayName[new Date().getDay() + param + 1]}</p>
-        <img src={iconUrlFromCode(alldays[param].weather[0].icon)} alt=" " />
+        <img src={iconUrlFromCode(alldays[param].weather[0].icon)} alt="weather-icon" />
         <h3>{`${ele}${unit}`}</h3>
       </button>
     </div>
   );
 
   return (
-    <div className="flex flex-col items-center gap-5 text-white ">
+    <div className="flex flex-col items-center gap-5 text-white mb-5">
       <div className="flex justify-evenly w-full">
         {!erro ? day.map((ele, ind) => dayWeek(ele, ind)) : null}
       </div>
