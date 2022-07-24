@@ -14,7 +14,7 @@ export default function Home() {
     });
   };
   return (
-    <div className="flex flex-col items-center gap-5 w-full h-full bg-gradient-to-br from-cyan-700 to-blue-700">
+    <div className="flex flex-col items-center gap-5 w-full h-screen bg-gradient-to-br from-cyan-700 to-blue-700">
       <div className="flex gap-5 w-11/12 bg-black/[0.1] rounded-lg">
         <MainScreen func={funcdata} />
       </div>
