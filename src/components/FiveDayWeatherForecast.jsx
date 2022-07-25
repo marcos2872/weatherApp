@@ -60,8 +60,7 @@ export default function FiveDayWeatherForecast(props) {
   }, [info, index]);
 
   const details = () => (
-    <div className="flex justify-evenly text-lg my-5">
-      <section>
+    <div className="flex flex-col items-center text-base mt-5">
         <p className="flex flex-row mb-3 items-end gap-3 text-white">
           <UilUserExclamation size={25} className="text-white" />
           Sensação termica:
@@ -82,19 +81,16 @@ export default function FiveDayWeatherForecast(props) {
           Vento:
           {` ${infoDetails.wind.speed}${unit === '°C' ? 'm/s' : 'mp/h'}`}
         </p>
-      </section>
-      <section>
-        <p className="flex flex-row mb-3 items-end gap-2 text-white">
+        <p className="flex flex-row mb-3 items-end gap-3 text-white">
           <UilCompressLines size={25} className="text-white" />
           Pressão:
           {` ${infoDetails.main.pressure}hPa`}
         </p>
-        <p className="flex flex-row mb-5 items-center gap-2 text-white">
+        <p className="flex flex-row mb-5 items-center gap-3 text-white">
           <UilEye size={25} className="text-white" />
           Visibilidade:
           {` ${unit === '°C' ? infoDetails.visibility / 1000 : ((infoDetails.visibility / 1000) * 1.60934).toFixed(2)}${unit === '°C' ? 'km' : 'mi'}`}
         </p>
-      </section>
     </div>
   );
 
@@ -113,8 +109,8 @@ export default function FiveDayWeatherForecast(props) {
   );
 
   return (
-    <div className="flex flex-col items-center gap-5 text-white mb-5">
-      <div className="flex justify-evenly w-full">
+    <div className="flex flex-col gap-5 text-white mb-5">
+      <div className="flex justify-center gap-12 w-full">
         {!erro ? day.map((ele, ind) => dayWeek(ele, ind)) : null}
       </div>
       {open && details()}

@@ -19,7 +19,7 @@ export default function ScreenDetails(props) {
       <div className="">
         {data !== '404'
           ? (
-            <div className="flex justify-evenly gap-5 text-lg my-6">
+            <div className="flex justify-evenly gap-5 text-lg mt-6 mb-4">
               <section>
                 <p className="flex flex-row mb-3 items-end gap-3 text-white">
                   <UilUserExclamation size={25} className="text-white" />
@@ -62,7 +62,9 @@ export default function ScreenDetails(props) {
               </section>
             </div>
           ) : null}
-        <hr className="mb-4border-indigo-300" />
+          <div className="w-3/5 m-auto">
+            <hr className="mb-4 border-t-neutral-200" />
+          </div>
       </div>
 
     );

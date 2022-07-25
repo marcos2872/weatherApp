@@ -71,7 +71,8 @@ export default function MainScreen(props) {
       <header className="flex justify-center">
         <h1 className="text-3xl font-bold flex justify-center text-white mt-5">Weather</h1>
         <button
-          className=" text-white flex justify-center items-center bg-cyan-500 hover:bg-cyan-600 shadow-lg shadow-cyan-500/50 rounded-md w-10 h-7"
+          className=" text-white flex justify-center items-center relative top-1/4 
+          left-1/2 w-10 h-7 bg-cyan-500 hover:bg-cyan-600 shadow-lg shadow-cyan-500/50 rounded-md "
           type="button"
           disabled={btnlook}
           onClick={() => {
