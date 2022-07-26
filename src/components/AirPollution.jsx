@@ -1,8 +1,8 @@
 /* eslint-disable consistent-return */
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
-// import { airPollution } from '../services/getApiWeather';
-import { airP } from '../tests/data';
+import { airPollution } from '../services/getApiWeather';
+// import { airP } from '../tests/data';
 
 export default function AirPollution(props) {
   const [deta, setDeta] = useState({});
@@ -13,10 +13,10 @@ export default function AirPollution(props) {
   const getApi = async () => {
     const { data } = info;
     if (data !== '404') {
-      // const loc = await airPollution(data.coord.lat, data.coord.lon);
+      const loc = await airPollution(data.coord.lat, data.coord.lon);
       setErro(false);
-      return setDeta(airP);
-      // return setDeta(loc.list[0]);
+      // return setDeta(airP);
+      return setDeta(loc.list[0]);
     }
     setErro(true);
   };

@@ -1,14 +1,14 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import {
-  // search,
+  search,
   iconUrlFromCode,
 } from '../services/getApiWeather';
-import { mainS } from '../tests/data';
+// import { mainS } from '../tests/data';
 
 export default function MainScreen(props) {
   const [city, setCity] = useState('');
-  // const [cityBkp, setCityBkp] = useState('');
+  const [cityBkp, setCityBkp] = useState('');
   const [data, setData] = useState(undefined);
   const [btnlook, setBtnlook] = useState(true);
   const [units, setUnits] = useState('metric');
@@ -19,8 +19,8 @@ export default function MainScreen(props) {
 
   const weather = async () => {
     const { func } = props;
-    // const response = await search(cityBkp, units, 'pt_br');
-    const response = mainS;
+    const response = await search(cityBkp, units, 'pt_br');
+    // const response = mainS;
     if (response.cod === '404') {
       setError(response.message);
       setCity('');
@@ -46,7 +46,7 @@ export default function MainScreen(props) {
   const saveInput = ({ target }) => {
     const { value } = target;
     setCity(value);
-    // setCityBkp(value);
+    setCityBkp(value);
     setBtnlook(value.length < 3);
   };
 
@@ -82,7 +82,7 @@ export default function MainScreen(props) {
         </button>
       </header>
       <input
-        className="text-white text-x rounded-md font-light p-2 shadow-xl w-4/12 focus:outline-none capitalize m-auto mb-9 placeholder:lowercase"
+        className="text-x rounded-md font-light p-2 shadow-xl w-4/12 focus:outline-none capitalize m-auto mb-9 placeholder:lowercase"
         type="text"
         value={city}
         name="city"
@@ -93,7 +93,7 @@ export default function MainScreen(props) {
       <main>
         {error ? <h5 className="flex justify-center">{error}</h5>
           : data && (
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col items-center gap-4">
             <p className="flex justify-center capitalize text-white">{`${dayName[new Date().getDay()]} ${date[0]} | Hora Local: ${date[1]}`}</p>
             <p className="flex justify-center text-2xl capitalize text-white">
               {data.name}

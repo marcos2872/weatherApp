@@ -9,10 +9,10 @@ import {
   UilEye,
 } from '@iconscout/react-unicons';
 import {
-  // call5day,
+  call5day,
   iconUrlFromCode,
 } from '../services/getApiWeather';
-import { forecast } from '../tests/data';
+// import { forecast } from '../tests/data';
 
 export default function FiveDayWeatherForecast(props) {
   const [day, setDay] = useState();
@@ -25,13 +25,13 @@ export default function FiveDayWeatherForecast(props) {
   const { info } = props;
   const dayName = ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado', 'domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado'];
 
-  // const units = (cf) => (cf === '°C' ? 'metric' : 'imperial');
+  const units = (cf) => (cf === '°C' ? 'metric' : 'imperial');
 
   const getApi = async () => {
     const { data, cf } = info;
     if (data !== '404') {
-      // const response = await call5day(data.coord.lat, data.coord.lon, units(cf));
-      const response = forecast;
+      const response = await call5day(data.coord.lat, data.coord.lon, units(cf));
+      // const response = forecast;
       const deta = response.list.filter((item) => item.dt_txt.includes('12:00:00'));
       const days = deta.map(({ main }) => main.temp);
       setUnit(cf);
