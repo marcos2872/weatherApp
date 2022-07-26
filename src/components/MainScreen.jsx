@@ -66,12 +66,13 @@ export default function MainScreen(props) {
 
   return (
     <div
-      className="rounded-md container mx-auto flex flex-col align-center gap-7"
+      className="rounded-md container mx-auto flex flex-col align-center gap-5 "
     >
-      <header className="flex justify-center gap-5">
-        <h1 className="text-3xl font-bold flex justify-center text-white">Weather</h1>
+      <header className="flex justify-center">
+        <h1 className="text-3xl font-bold flex justify-center text-white mt-5">Weather</h1>
         <button
-          className=" text-white flex justify-center bg-cyan-500 hover:bg-cyan-600 shadow-lg shadow-cyan-500/50 rounded-md w-10 absolute left-12 top-12"
+          className=" text-white flex justify-center items-center relative top-full
+          left-1/4 w-10 h-7 bg-cyan-500 hover:bg-cyan-600 shadow-lg shadow-cyan-500/50 rounded-md "
           type="button"
           disabled={btnlook}
           onClick={() => {
@@ -82,7 +83,7 @@ export default function MainScreen(props) {
         </button>
       </header>
       <input
-        className="text-x rounded-md font-light p-2 shadow-xl w-4/12 focus:outline-none capitalize m-auto mb-9 placeholder:lowercase"
+        className="text-x rounded-md font-light p-2 shadow-xl w-4/12 focus:outline-none capitalize m-auto mb-3 placeholder:lowercase"
         type="text"
         value={city}
         name="city"
@@ -101,8 +102,8 @@ export default function MainScreen(props) {
             <p className="flex justify-center capitalize text-cyan-200">
               {data.weather[0].description}
             </p>
-            <img src={iconUrlFromCode(data.weather[0].icon)} alt="" className="w-20 flex justify-center" />
-            <h2 className="flex justify-center text-5xl  pb-2 mb-12 text-white">
+            <img src={iconUrlFromCode(data.weather[0].icon)} alt="description-icon" className="w-20 flex m-auto" />
+            <h2 className="flex justify-center text-5xl  pb-2 mb-5 text-white">
               {data.main.temp}
               {cf}
             </h2>

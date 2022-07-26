@@ -50,16 +50,15 @@ export default function AirPollution(props) {
           </button>
           {open
           && (
-            <div className=" flex-col rounded-md gap-3 text-white w-4/5">
-              <p><a href="https://pt.wikipedia.org/wiki/Mon%C3%B3xido_de_carbono" target="_blank" rel="noreferrer">{`CO: ${deta.components.co}μg/m3`}</a></p>
-              <p><a href="https://pt.wikipedia.org/wiki/%C3%93xido_n%C3%ADtrico" target="_blanck">{`NO: ${deta.components.no}μg/m3`}</a></p>
-              <p><a href="https://pt.wikipedia.org/wiki/Di%C3%B3xido_de_nitrog%C3%A9nio" target="_blanck">{`NO₂: ${deta.components.no2}μg/m3`}</a></p>
-              <p><a href="https://pt.wikipedia.org/wiki/Oz%C3%B4nio" target="_blanck">{`O₃: ${deta.components.o3}μg/m3`}</a></p>
-              <p><a href="https://pt.wikipedia.org/wiki/Di%C3%B3xido_de_enxofre" target="_blanck">{`SO₂: ${deta.components.so2}μg/m3`}</a></p>
-              <p><a href="https://pt.wikipedia.org/wiki/Amon%C3%ADaco" target="_blanck">{`NH₃: ${deta.components.nh3}μg/m3`}</a></p>
-              <p><a href="https://www.ecycle.com.br/material-particulado/" target="_blanck">{`Pf: ${deta.components.pm2_5}μg/m3`}</a></p>
-              <p><a href="https://www.ecycle.com.br/material-particulado/" target="_blanck">{`Pg: ${deta.components.pm10}μg/m3`}</a></p>
-
+            <div className=" flex-col self-center rounded-md gap-3 text-white w-4/5">
+              <p className="my-1.5"><a href="https://pt.wikipedia.org/wiki/Mon%C3%B3xido_de_carbono" target="_blank" rel="noreferrer">{`CO: ${deta.components.co}μg/m3`}</a></p>
+              <p className="my-1.5"><a href="https://pt.wikipedia.org/wiki/%C3%93xido_n%C3%ADtrico" target="_blanck">{`NO: ${deta.components.no}μg/m3`}</a></p>
+              <p className="my-1.5"><a href="https://pt.wikipedia.org/wiki/Di%C3%B3xido_de_nitrog%C3%A9nio" target="_blanck">{`NO₂: ${deta.components.no2}μg/m3`}</a></p>
+              <p className="my-1.5"><a href="https://pt.wikipedia.org/wiki/Oz%C3%B4nio" target="_blanck">{`O₃: ${deta.components.o3}μg/m3`}</a></p>
+              <p className="my-1.5"><a href="https://pt.wikipedia.org/wiki/Di%C3%B3xido_de_enxofre" target="_blanck">{`SO₂: ${deta.components.so2}μg/m3`}</a></p>
+              <p className="my-1.5"><a href="https://pt.wikipedia.org/wiki/Amon%C3%ADaco" target="_blanck">{`NH₃: ${deta.components.nh3}μg/m3`}</a></p>
+              <p className="my-1.5"><a href="https://www.ecycle.com.br/material-particulado/" target="_blanck">{`Pf: ${deta.components.pm2_5}μg/m3`}</a></p>
+              <p className="my-1.5"><a href="https://www.ecycle.com.br/material-particulado/" target="_blanck">{`Pg: ${deta.components.pm10}μg/m3`}</a></p>
             </div>
           )}
         </div>

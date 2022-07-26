@@ -37,6 +37,7 @@ export default function FiveDayWeatherForecast(props) {
       setUnit(cf);
       setDay(days);
       setAlldays(deta);
+      setInfoDetails(deta[index]);
       return setErro(false);
     }
     return setErro(true);
@@ -60,41 +61,37 @@ export default function FiveDayWeatherForecast(props) {
   }, [info, index]);
 
   const details = () => (
-    <div className="flex justify-evenly gap-5  text-lg mb-5">
-      <section>
-        <p className="flex flex-row mb-3 items-end gap-3 text-white">
-          <UilUserExclamation size={25} className="text-white" />
-          Sensação termica:
-          {` ${infoDetails.main.feels_like}${unit}`}
-        </p>
-        <p className="flex flex-row mb-3 items-end gap-3 text-white">
-          <UilTemperatureHalf size={25} className="text-white" />
-          Temp Max/Min:
-          {` ${infoDetails.main.temp_max}°/${infoDetails.main.temp_max}°`}
-        </p>
-        <p className="flex flex-row mb-3 items-end gap-3 text-white">
-          <UilRaindropsAlt size={25} className="text-white" />
-          Umidade:
-          {` ${infoDetails.main.humidity}%`}
-        </p>
-        <p className="flex flex-row mb-3 items-end gap-3 text-white">
-          <UilWind size={25} className="text-white" />
-          Vento:
-          {` ${infoDetails.wind.speed}${unit === '°C' ? 'm/s' : 'mp/h'}`}
-        </p>
-      </section>
-      <section>
-        <p className="flex flex-row mb-3 items-end gap-2 text-white">
-          <UilCompressLines size={25} className="text-white" />
-          Pressão:
-          {` ${infoDetails.main.pressure}hPa`}
-        </p>
-        <p className="flex flex-row mb-5 items-center gap-2 text-white">
-          <UilEye size={25} className="text-white" />
-          Visibilidade:
-          {` ${unit === '°C' ? infoDetails.visibility / 1000 : ((infoDetails.visibility / 1000) * 1.60934).toFixed(2)}${unit === '°C' ? 'km' : 'mi'}`}
-        </p>
-      </section>
+    <div className="flex flex-col items-center text-base mt-5">
+      <p className="flex flex-row mb-3 items-end gap-3 text-white">
+        <UilUserExclamation size={25} className="text-white" />
+        Sensação termica:
+        {` ${infoDetails.main.feels_like}${unit}`}
+      </p>
+      <p className="flex flex-row mb-3 items-end gap-3 text-white">
+        <UilTemperatureHalf size={25} className="text-white" />
+        Temp Max/Min:
+        {` ${infoDetails.main.temp_max}°/${infoDetails.main.temp_max}°`}
+      </p>
+      <p className="flex flex-row mb-3 items-end gap-3 text-white">
+        <UilRaindropsAlt size={25} className="text-white" />
+        Umidade:
+        {` ${infoDetails.main.humidity}%`}
+      </p>
+      <p className="flex flex-row mb-3 items-end gap-3 text-white">
+        <UilWind size={25} className="text-white" />
+        Vento:
+        {` ${infoDetails.wind.speed}${unit === '°C' ? 'm/s' : 'mp/h'}`}
+      </p>
+      <p className="flex flex-row mb-3 items-end gap-3 text-white">
+        <UilCompressLines size={25} className="text-white" />
+        Pressão:
+        {` ${infoDetails.main.pressure}hPa`}
+      </p>
+      <p className="flex flex-row mb-5 items-center gap-3 text-white">
+        <UilEye size={25} className="text-white" />
+        Visibilidade:
+        {` ${unit === '°C' ? infoDetails.visibility / 1000 : ((infoDetails.visibility / 1000) * 1.60934).toFixed(2)}${unit === '°C' ? 'km' : 'mi'}`}
+      </p>
     </div>
   );
 
@@ -106,15 +103,15 @@ export default function FiveDayWeatherForecast(props) {
         className={`uppercase ${param === index && open ? 'bg-black/10 rounded-lg' : ''}`}
       >
         <p>{dayName[new Date().getDay() + param + 1]}</p>
-        <img src={iconUrlFromCode(alldays[param].weather[0].icon)} alt=" " />
+        <img src={iconUrlFromCode(alldays[param].weather[0].icon)} alt="weather-icon" />
         <h3>{`${ele}${unit}`}</h3>
       </button>
     </div>
   );
 
   return (
-    <div className="flex flex-col items-center gap-5 text-white ">
-      <div className="flex justify-evenly w-full">
+    <div className="flex flex-col gap-5 text-white mb-5">
+      <div className="flex justify-center gap-12 w-full">
         {!erro ? day.map((ele, ind) => dayWeek(ele, ind)) : null}
       </div>
       {open && details()}
