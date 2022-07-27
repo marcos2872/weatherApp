@@ -1,9 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
-import {
-  search,
-  iconUrlFromCode,
-} from '../services/getApiWeather';
+import { iconUrlFromCode, search } from '../services/getApiWeather';
 // import { mainS } from '../tests/data';
 
 export default function MainScreen(props) {
@@ -95,7 +92,7 @@ export default function MainScreen(props) {
         {error ? <h5 className="flex justify-center">{error}</h5>
           : data && (
           <div className="flex flex-col items-center gap-4">
-            <p className="flex justify-center capitalize text-white">{`${dayName[new Date().getDay()]} ${date[0]} | Hora Local: ${date[1]}`}</p>
+            <p data-testid="day-name" className="flex justify-center capitalize text-white">{`${dayName[new Date().getDay()]} ${date[0]} | Hora Local: ${date[1]}`}</p>
             <p className="flex justify-center text-2xl capitalize text-white">
               {data.name}
             </p>

@@ -1,15 +1,8 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import {
-  BrowserRouter,
-  // MemoryRouter,
-} from 'react-router-dom';
-import {
-  App,
-  // LocationDisplay,
-} from '../App';
-// import renderWithRouter from '../renderWithRouter';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { App } from '../App';
 
 describe('teste', () => {
   it('renders learn react link', () => {
@@ -31,5 +24,11 @@ describe('teste', () => {
     const { getByPlaceholderText } = render(<App />, { wrapper: BrowserRouter });
     const placeholder = getByPlaceholderText(/digite o nome da cidade/i);
     expect(placeholder).toBeInTheDocument();
+  });
+  it('teste se o botão contém o texto.', () => {
+    render(<App />, { wrapper: BrowserRouter });
+    const textButton = screen.getByRole('button');
+    expect(textButton).toHaveTextContent(/°C/i);
+    expect(textButton).toBeInTheDocument();
   });
 });
