@@ -31,6 +31,13 @@ export default function Footer() {
           <a href="https://www.linkedin.com/in/daniel-rubens-556a7898/" target="blanck" name="gitm" id="gitm" className="flex">
             <UilLinkedin size={16}/>
           </a>
+          <p>- Raynara Santiago</p>
+          <a href="https://github.com/raynarastg" target="blanck" name="gitm" id="gitm" className="flex">
+            <UilGithub size={16}/>
+          </a>
+          <a href="https://www.linkedin.com/in/raynarastg/" target="blanck" name="gitm" id="gitm" className="flex">
+            <UilLinkedin size={16}/>
+          </a>
         </div>
           <a href="https://github.com/marcos2872/weatherApp" target="blanck" className="mt-5 text-xs flex justify-center"> Clique aqui para acessar o repositório do Projeto</a>
       </section>
