@@ -62,7 +62,7 @@ export default function MainScreen(props) {
   }
 
   useEffect(() => {
-    if (update) {
+    if (update && cityBkp.length > 3) {
       weather();
     }
   }, [cityBkp]);
