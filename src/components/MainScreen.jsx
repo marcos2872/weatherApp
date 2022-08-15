@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import { iconUrlFromCode, search } from '../services/getApiWeather';
-// import { mainS } from '../tests/data';
 
 export default function MainScreen(props) {
   const [city, setCity] = useState('');
@@ -17,7 +16,6 @@ export default function MainScreen(props) {
   const weather = async () => {
     const { func } = props;
     const response = await search(cityBkp, units, 'pt_br');
-    // const response = mainS;
     if (response.cod === '404') {
       setError(response.message);
       setCity('');
@@ -28,7 +26,6 @@ export default function MainScreen(props) {
       setData(response);
       setCity('');
       func(response, cf);
-      // console.log(response);
     }
     const dt = new Date().toLocaleString();
     setDate(dt.split(' '));
