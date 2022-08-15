@@ -16,7 +16,7 @@ export default function Home() {
   };
   return (
     <main className="bg-gradient-to-br from-cyan-700 to-blue-700">
-      <div className="flex flex-col items-center gap-5 w-full h-full bg-gradient-to-br from-cyan-700 to-blue-700">
+      <div className="flex flex-col items-center gap-5 w-full min-h-screen bg-gradient-to-br from-cyan-700 to-blue-700">
         <div className="flex gap-5 w-11/12 bg-black/[0.1] rounded-lg mt-5 shadow-xl">
           <MainScreen func={funcdata} />
         </div>
@@ -29,12 +29,10 @@ export default function Home() {
             <AirPollution info={data} />
           </div>
         </div>
-        <footer className="my-5">
+        <footer className="my-5 flex">
           <Footer />
         </footer>
-
       </div>
     </main>
-
   );
 }

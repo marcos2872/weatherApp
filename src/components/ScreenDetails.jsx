@@ -62,9 +62,9 @@ export default function ScreenDetails(props) {
               </section>
             </div>
           ) : null}
-          <div className="w-3/5 m-auto">
-            <hr className="mb-4 border-t-neutral-200" />
-          </div>
+        <div className="w-3/5 m-auto">
+          <hr className="mb-4 border-t-neutral-200" />
+        </div>
       </div>
 
     );
