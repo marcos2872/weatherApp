@@ -47,6 +47,7 @@ export default function MainScreen(props) {
     setCityBkp(cityName.address.town);
     setUpdate(true);
     setLoading(false);
+    setBtnlook(false);
   }
   function getCoordintes() {
     function success(pos) {
