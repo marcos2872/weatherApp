@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { iconUrlFromCode, search } from '../services/getApiWeather';
 
 export default function MainScreen(props) {
-  const [city, setCity] = useState('');
+  const [cit, setCity] = useState('');
   const [cityBkp, setCityBkp] = useState('');
   const [data, setData] = useState(undefined);
   const [btnlook, setBtnlook] = useState(true);
@@ -12,6 +12,7 @@ export default function MainScreen(props) {
   const [cf, setCf] = useState('°C');
   const [update, setUpdate] = useState(false);
   const [date, setDate] = useState(undefined);
+  const [loading, setLoading] = useState(true);
 
   const weather = async () => {
     const { func } = props;
@@ -36,6 +37,38 @@ export default function MainScreen(props) {
       weather();
     }
   }, [units]);
+
+  async function getCity(coordinates) {
+    const lat = coordinates[0];
+    const lng = coordinates[1];
+
+    const response = await fetch(`https://us1.locationiq.com/v1/reverse.php?key=pk.1c2a01d0d1e02774355084100b798d11&lat=${lat}&lon=${lng}&format=json`);
+    const cityName = await response.json();
+    setCityBkp(cityName.address.town);
+    setUpdate(true);
+    setLoading(false);
+  }
+  function getCoordintes() {
+    function success(pos) {
+      const crd = pos.coords;
+      const lat = crd.latitude.toString();
+      const lng = crd.longitude.toString();
+      const coordinates = [lat, lng];
+      getCity(coordinates);
+    }
+
+    navigator.geolocation.getCurrentPosition(success);
+  }
+
+  useEffect(() => {
+    if (update) {
+      weather();
+    }
+  }, [cityBkp]);
+
+  useEffect(() => {
+    getCoordintes();
+  }, []);
 
   const saveInput = ({ target }) => {
     const { value } = target;
@@ -79,13 +112,14 @@ export default function MainScreen(props) {
       <input
         className="text-x rounded-md font-light p-2 shadow-xl w-4/12 focus:outline-none capitalize m-auto mb-3 placeholder:lowercase"
         type="text"
-        value={city}
+        value={cit}
         name="city"
         onChange={saveInput}
         onKeyUp={(event) => event.key === 'Enter' && weather()}
         placeholder="Digite o nome da cidade"
       />
       <main>
+        {loading && <h3>Buscando localização</h3> }
         {error ? <h5 className="flex justify-center">{error}</h5>
           : data && (
           <div className="flex flex-col items-center gap-4">
