@@ -44,7 +44,8 @@ export default function MainScreen(props) {
 
     const response = await fetch(`https://us1.locationiq.com/v1/reverse.php?key=pk.1c2a01d0d1e02774355084100b798d11&lat=${lat}&lon=${lng}&format=json`);
     const cityName = await response.json();
-    setCityBkp(cityName.address.town);
+    setCityBkp(cityName.address.town)
+    console.log(cityName.address.town);
     setUpdate(true);
     setLoading(false);
     setBtnlook(false);
@@ -62,7 +63,7 @@ export default function MainScreen(props) {
   }
 
   useEffect(() => {
-    if (update && cityBkp.length > 3) {
+    if (update) {
       weather();
     }
   }, [cityBkp]);
