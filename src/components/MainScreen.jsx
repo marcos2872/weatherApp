@@ -13,8 +13,11 @@ export default function MainScreen(props) {
   const [update, setUpdate] = useState(false);
   const [date, setDate] = useState(undefined);
   const [loading, setLoading] = useState(true);
+  const [coordintesError, setCoordintesError] = useState(false);
 
   const weather = async () => {
+    setLoading(false);
+    setCoordintesError(false);
     const { func } = props;
     const response = await search(cityBkp, units, 'pt_br');
     if (response.cod === '404') {
@@ -44,10 +47,14 @@ export default function MainScreen(props) {
 
     const response = await fetch(`https://us1.locationiq.com/v1/reverse.php?key=pk.1c2a01d0d1e02774355084100b798d11&lat=${lat}&lon=${lng}&format=json`);
     const cityName = await response.json();
-    setCityBkp(cityName.address.town);
-    setUpdate(true);
-    setLoading(false);
-    setBtnlook(false);
+    if (cityName.address.town) {
+      setCityBkp(cityName.address.town);
+      setUpdate(true);
+      setBtnlook(false);
+    } else {
+      setLoading(false);
+      setCoordintesError(true);
+    }
   }
   function getCoordintes() {
     function success(pos) {
@@ -121,6 +128,7 @@ export default function MainScreen(props) {
       />
       <main>
         {loading && <h3>Buscando localização</h3> }
+        {coordintesError && <h3>Não foi possivel achar sua localização</h3>}
         {error ? <h5 className="flex justify-center">{error}</h5>
           : data && (
           <div className="flex flex-col items-center gap-4">
