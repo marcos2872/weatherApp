@@ -132,8 +132,8 @@ export default function MainScreen(props) {
         placeholder="Digite o nome da cidade"
       />
       <main>
-        {loading && <h3>Buscando localização</h3> }
-        {coordintesError && <h3>Não foi possivel achar sua localização</h3>}
+        {loading && <h3 className="flex justify-center text-2xl capitalize text-white">Buscando localização...</h3> }
+        {coordintesError && <h3 className="flex justify-center text-2xl capitalize text-white">Não foi possível encontrar sua localização</h3>}
         {error ? <h5 className="flex justify-center">{error}</h5>
           : data && (
           <div className="flex flex-col items-center gap-4">
