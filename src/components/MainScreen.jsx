@@ -15,11 +15,11 @@ export default function MainScreen(props) {
   const [loading, setLoading] = useState(true);
   const [coordintesError, setCoordintesError] = useState(false);
 
-  const weather = async () => {
+  const weather = async (name) => {
     setLoading(false);
     setCoordintesError(false);
     const { func } = props;
-    const response = await search(cityBkp, units, 'pt_br');
+    const response = await search(cityBkp || name, units, 'pt_br');
     if (response.cod === '404') {
       setError(response.message);
       setCity('');
@@ -48,12 +48,12 @@ export default function MainScreen(props) {
     const response = await fetch(`https://us1.locationiq.com/v1/reverse.php?key=pk.473c1a9286e2e84af648057633b34dbb&lat=${lat}&lon=${lng}&format=json`);
     const cityName = await response.json();
     if (cityName.address.town) {
-      setCityBkp(cityName.address.town);
+      weather(cityName.address.town);
       setUpdate(true);
       return setBtnlook(false);
     }
     if (cityName.address.city) {
-      setCityBkp(cityName.address.city);
+      weather(cityName.address.city);
       setUpdate(true);
       return setBtnlook(false);
     }
@@ -71,12 +71,6 @@ export default function MainScreen(props) {
 
     navigator.geolocation.getCurrentPosition(success);
   }
-
-  useEffect(() => {
-    if (update) {
-      weather();
-    }
-  }, [cityBkp]);
 
   useEffect(() => {
     getCoordintes();
