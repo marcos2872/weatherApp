@@ -66,7 +66,6 @@ export default function MainScreen(props) {
       const lat = crd.latitude.toString();
       const lng = crd.longitude.toString();
       const coordinates = [lat, lng];
-      console.log(coordinates);
       getCity(coordinates);
     }
 
