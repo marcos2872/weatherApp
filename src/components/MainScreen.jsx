@@ -45,16 +45,20 @@ export default function MainScreen(props) {
     const lat = coordinates[0];
     const lng = coordinates[1];
 
-    const response = await fetch(`https://us1.locationiq.com/v1/reverse.php?key=pk.1c2a01d0d1e02774355084100b798d11&lat=${lat}&lon=${lng}&format=json`);
+    const response = await fetch(`https://us1.locationiq.com/v1/reverse.php?key=pk.473c1a9286e2e84af648057633b34dbb&lat=${lat}&lon=${lng}&format=json`);
     const cityName = await response.json();
     if (cityName.address.town) {
       setCityBkp(cityName.address.town);
       setUpdate(true);
-      setBtnlook(false);
-    } else {
-      setLoading(false);
-      setCoordintesError(true);
+      return setBtnlook(false);
     }
+    if (cityName.address.city) {
+      setCityBkp(cityName.address.city);
+      setUpdate(true);
+      return setBtnlook(false);
+    }
+    setLoading(false);
+    return setCoordintesError(true);
   }
   function getCoordintes() {
     function success(pos) {
