@@ -127,7 +127,7 @@ export default function MainScreen(props) {
       <main>
         {loading && <h3 className="flex justify-center text-2xl capitalize text-white">Buscando localização...</h3> }
         {coordintesError && <h3 className="flex justify-center text-2xl capitalize text-white">Não foi possível encontrar sua localização</h3>}
-        {error ? <h5 className="flex justify-center">{error}</h5>
+        {error ? <h5 className="flex justify-center text-2xl capitalize text-white">{error}</h5>
           : data && (
           <div className="flex flex-col items-center gap-4">
             <p data-testid="day-name" className="flex justify-center capitalize text-white">{`${dayName[new Date().getDay()]} ${date[0]} | Hora Local: ${date[1]}`}</p>
