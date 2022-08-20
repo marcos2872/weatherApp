@@ -15,7 +15,7 @@ export default function AirPollution(props) {
     if (data !== '404') {
       const loc = await airPollution(data.coord.lat, data.coord.lon);
       setErro(false);
-      // return setDeta(airP);
+      setErro(!(loc.list.length > 0));
       return setDeta(loc.list[0]);
     }
     setErro(true);
