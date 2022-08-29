@@ -24,7 +24,7 @@ export default function MainScreen(props) {
       setError(response.message);
       setCity('');
       setBtnlook(true);
-      // func(response.cod, cf);
+      func(response.cod, cf);
     } else {
       setError(undefined);
       setData(response);
