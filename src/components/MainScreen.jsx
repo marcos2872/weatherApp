@@ -49,11 +49,13 @@ export default function MainScreen(props) {
     const cityName = await response.json();
     if (cityName.address.town) {
       weather(cityName.address.town);
+      setCityBkp(cityName.address.town);
       setUpdate(true);
       return setBtnlook(false);
     }
     if (cityName.address.city) {
       weather(cityName.address.city);
+      setCityBkp(cityName.address.city);
       setUpdate(true);
       return setBtnlook(false);
     }
