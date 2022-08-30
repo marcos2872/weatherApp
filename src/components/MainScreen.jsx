@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
-import { iconUrlFromCode, search } from '../services/getApiWeather';
+import { iconUrlFromCode, locationIq, search } from '../services/getApiWeather';
 
 export default function MainScreen(props) {
   const [cit, setCity] = useState('');
@@ -44,9 +44,7 @@ export default function MainScreen(props) {
   async function getCity(coordinates) {
     const lat = coordinates[0];
     const lng = coordinates[1];
-
-    const response = await fetch(`https://us1.locationiq.com/v1/reverse.php?key=pk.473c1a9286e2e84af648057633b34dbb&lat=${lat}&lon=${lng}&format=json`);
-    const cityName = await response.json();
+    const cityName = await locationIq(lat, lng);
     if (cityName.address.town) {
       weather(cityName.address.town);
       setCityBkp(cityName.address.town);

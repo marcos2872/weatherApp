@@ -1,5 +1,4 @@
-// const Key = 'b40d105652572479bed6fab2551755d2';
-const Key = '556dde43cb373c1d662046ef78b4e7e0';
+const Key = process.env.REACT_APP_WEATHER_KEY;
 
 export async function search(city, units, lang) {
   try {
@@ -35,3 +34,10 @@ export async function call5day(lat, lon, units) {
 }
 
 export const iconUrlFromCode = (code) => `http://openweathermap.org/img/wn/${code}@2x.png`;
+
+export async function locationIq(lat, lng) {
+  const url = `https://us1.locationiq.com/v1/reverse.php?key=${process.env.REACT_APP_LOCATION_IQ_KEY}&lat=${lat}&lon=${lng}&format=json`;
+  const response = await fetch(url);
+  const cityName = await response.json();
+  return cityName;
+}
