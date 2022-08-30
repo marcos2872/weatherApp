@@ -1,5 +1,3 @@
-# weatherApp
-
 #Tailwind
 https://tailwindcss.com/docs/installation
 
