@@ -1,6 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { useState } from 'react';
-import AirPollution from '../components/AirPollution';
+// import AirPollution from '../components/AirPollution';
 import FiveDayWeatherForecast from '../components/FiveDayWeatherForecast';
 import Footer from '../components/Footer';
 import MainScreen from '../components/MainScreen';
@@ -26,7 +26,7 @@ export default function Home() {
             <FiveDayWeatherForecast info={data} />
           </div>
           <div className="flex flex-col gap-5 w-3/12 bg-black/[0.1] h-fit rounded-lg shadow-xl">
-            <AirPollution info={data} />
+            {/* <AirPollution info={data} /> */}
           </div>
         </div>
         <footer className="my-5 flex">
