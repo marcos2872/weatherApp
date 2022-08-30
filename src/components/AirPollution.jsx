@@ -14,7 +14,9 @@ export default function AirPollution(props) {
     const { data } = info;
     if (data !== '404') {
       const loc = await airPollution(data.coord.lat, data.coord.lon);
-      setErro(false);
+      if (loc.code === '401') {
+        return setErro(true);
+      }
       setErro(!(loc.list.length > 0));
       return setDeta(loc.list[0]);
     }
@@ -68,7 +70,7 @@ export default function AirPollution(props) {
 
   return (
     <div className=" container mx-auto flex justify-center gap-4">
-      {info ? index() : null}
+      {info ? index() : ''}
     </div>
   );
 }
